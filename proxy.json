@@ -1,6 +1,22 @@
 {
-  "notLocal": "selected",
+  "mode": "name",
   "localIdentification": "<local>;",
-  "ProxyServer": "",
-  "ProxyOverride": ""
+  "auto": {
+    "notLocal": "selected",
+    "ProxyServer": "",
+    "ProxyOverride": ""
+  },
+  "name": {
+    "wifiName": {
+      "enable": "start",
+      "notLocal": "selected",
+      "ProxyServer": "",
+      "ProxyOverride": ""
+    }
+  },
+  "manual": {
+    "notLocal": "selected",
+    "ProxyServer": "",
+    "ProxyOverride": ""
+  }
 }
