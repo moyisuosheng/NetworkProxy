@@ -173,7 +173,7 @@ class AutoProxy(ProxyMode):
                             "localIdentification"] != ""
                         and 'ProxyServer' in set_conf and set_conf["ProxyServer"] != ""
                         and 'ProxyOverride' in set_conf):
-                    super.check = True
+                    self.check = True
                     print("\033[0;32;40m 配置校验通过\033[0m")
                     return True
                 else:
@@ -253,12 +253,14 @@ class NameProxy(ProxyMode):
                 name_conf = proxy_dict["name"]
                 if self.wifi_name in name_conf:
                     set_conf = name_conf[self.wifi_name]
-                    if ("enable" in set_conf and set_conf["enable"] != ""
+                    if ("enable" in set_conf
+                            and ((set_conf["enable"] == "open"
+                                  and 'ProxyServer' in set_conf and set_conf["ProxyServer"] != "")
+                                 or (set_conf["enable"] != "" and set_conf["enable"] != "open"))
                             and 'notLocal' in set_conf
                             and 'localIdentification' in proxy_dict and proxy_dict["localIdentification"] != ""
-                            and 'ProxyServer' in set_conf and set_conf["ProxyServer"] != ""
                             and 'ProxyOverride' in set_conf):
-                        super.check = True
+                        self.check = True
                         print("\033[0;32;40m 配置校验通过\033[0m")
                         return True
                     else:
@@ -335,7 +337,7 @@ class ManualProxy(ProxyMode):
                             "localIdentification"] != ""
                         and 'ProxyServer' in set_conf and set_conf["ProxyServer"] != ""
                         and 'ProxyOverride' in set_conf):
-                    super.check = True
+                    self.check = True
                     print("\033[0;32;40m 配置校验通过\033[0m")
                 else:
                     print("\033[0;31;40m 配置校验未通过！\033[0m")
@@ -408,6 +410,7 @@ def wait_for_input(timeout):
         # 用户已输入
         print(user_input)
     pass
+
 
 # 如果从来没有开过代理 有可能健不存在 会报错
 INTERNET_SETTINGS = winreg.OpenKey(winreg.HKEY_CURRENT_USER,

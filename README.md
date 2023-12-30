@@ -77,7 +77,7 @@ mode: 必填项, 值仅可填写其中一种。 [ "auto" , "name" , "manual" ]
 
 enable: 必填项, 当值为"open"时，开启系统代理 ，填写其他值则关闭。
 
-notLocal: 非必填项，当值为"selected"时，勾选 “请勿将代理服务器用于本地(Intranet)地址” 选项。
+notLocal: 非必填项，当值为"selected"时，勾选 “请勿将代理服务器用于本地(Intranet)地址” 选项，其他值不勾选。
 
 localIdentification: 必填项，勾选 “请勿将代理服务器用于本地(Intranet)地址” 选项 的标识字符串，默认为"<local>;"。
 

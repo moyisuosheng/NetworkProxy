@@ -7,10 +7,22 @@
     "ProxyOverride": ""
   },
   "name": {
-    "wifiName": {
-      "enable": "start",
+    "wifiName1": {
+      "enable": "open",
       "notLocal": "selected",
       "ProxyServer": "",
+      "ProxyOverride": ""
+    },
+    "wifiName2": {
+      "enable": "close",
+      "notLocal": "selected",
+      "ProxyServer": "",
+      "ProxyOverride": ""
+    },
+    "wifiName3": {
+      "enable": "open",
+      "notLocal": "not selected",
+      "ProxyServer": "127.0.0.1:80",
       "ProxyOverride": ""
     }
   },
