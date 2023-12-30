@@ -9,18 +9,12 @@ import winreg
 import ctypes
 from typing import TextIO
 
-import threading
-
 import abc
 
-import os
-import sys
-import select
-import signal
 
 import os
 import threading
-import time
+
 
 
 class ProxyMode(metaclass=abc.ABCMeta):
