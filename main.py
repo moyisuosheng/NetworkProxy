@@ -99,19 +99,19 @@ class ProxyMode(metaclass=abc.ABCMeta):
                 },
                 "name": {
                     "wifiName1": {
-                        "enable": "start",
+                        "enable": "open",
                         "notLocal": "selected",
                         "ProxyServer": "",
                         "ProxyOverride": ""
                     },
                     "wifiName2": {
-                        "enable": "stop",
+                        "enable": "close",
                         "notLocal": "selected",
                         "ProxyServer": "",
                         "ProxyOverride": ""
                     },
                     "wifiName3": {
-                        "enable": "start",
+                        "enable": "open",
                         "notLocal": "not selected",
                         "ProxyServer": "127.0.0.1:80",
                         "ProxyOverride": ""
@@ -273,7 +273,7 @@ class NameProxy(ProxyMode):
         local_identification: str = self.proxy_conf["localIdentification"]
         name_conf = proxy_dict["name"]
         set_conf = name_conf[self.wifi_name]
-        if set_conf["enable"] == "start":
+        if set_conf["enable"] == "open":
 
             if set_conf["notLocal"] == "selected":
                 # 设置代理

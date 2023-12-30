@@ -23,16 +23,60 @@ Windows系统一键配置系统代理
 
 ```
 {
-  "notLocal": "selected",
-  "localIdentification": "<local>;",
-  "ProxyServer": "",
-  "ProxyOverride": ""
-}
+                "mode": "name",
+                "localIdentification": "<local>;",
+                "auto": {
+                    "notLocal": "selected",
+                    "ProxyServer": "",
+                    "ProxyOverride": ""
+                },
+                "name": {
+                    "wifiName1": {
+                        "enable": "open",
+                        "notLocal": "selected",
+                        "ProxyServer": "",
+                        "ProxyOverride": ""
+                    },
+                    "wifiName2": {
+                        "enable": "close",
+                        "notLocal": "selected",
+                        "ProxyServer": "",
+                        "ProxyOverride": ""
+                    },
+                    "wifiName3": {
+                        "enable": "open",
+                        "notLocal": "not selected",
+                        "ProxyServer": "127.0.0.1:80",
+                        "ProxyOverride": ""
+                    }
+                },
+                "manual": {
+                    "notLocal": "selected",
+                    "ProxyServer": "",
+                    "ProxyOverride": ""
+                }
+            }
 ```
 
-解释：
+模式解释
 
 ```
+自动模式(auto)：识别代理状态并置反，开启系统代理时 配置参照 "auto" 属性。
+
+识别wifi名称模式(name)：获取当前wifi名称，参照"name"对象内的wifi名称对应配置文件内容设置系统代理。
+
+手动模式(manual)：读取配置文件 manual 属性内容，并根据手动选择选项，配置系统代理。
+```
+
+
+
+字段解释：
+
+```
+mode: 必填项, 值仅可填写其中一种。 [ "auto" , "name" , "manual" ]
+
+enable: 必填项, 当值为"open"时，开启系统代理 ，填写其他值则关闭。
+
 notLocal: 非必填项，当值为"selected"时，勾选 “请勿将代理服务器用于本地(Intranet)地址” 选项。
 
 localIdentification: 必填项，勾选 “请勿将代理服务器用于本地(Intranet)地址” 选项 的标识字符串，默认为"<local>;"。
@@ -40,5 +84,7 @@ localIdentification: 必填项，勾选 “请勿将代理服务器用于本地(
 ProxyServer: 必填项，设置代理的地址，格式为 ip:port 。
 
 ProxyServer: 非必填项，忽略的地址列表，字符串格式，地址见以分段号分割 ，若是包含字符串"<local>;" ，则勾选  “请勿将代理服务器用于本地(Intranet)地址” 选项。
+
+name: 可填写多项，配置参考模板。
 ```
 
