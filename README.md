@@ -12,7 +12,7 @@ Windows系统一键配置系统代理
 4. 在`终端`执行打包指令
 
    ```cmd
-   pyinstaller -F -i ./ico.ico ./main.py
+   pyinstaller -F -i ./ico.ico ./main.py -n NetworkProxy.exe
    ```
 
    即可在本项目的 `dist` 目录下找到打包好的`exe`文件。
