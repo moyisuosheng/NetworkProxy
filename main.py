@@ -288,18 +288,6 @@ class NameProxy(ProxyMode):
         pass
 
 
-# 功能：检查字符串str是否符合正则表达式re_exp
-# re_exp:正则表达式
-# str:待检查的字符串
-def check_string(re_exp, re_str):
-    res = re.search(re_exp, re_str)
-    if res:
-        return True
-    else:
-        return False
-    pass
-
-
 def get_wifi_name() -> str:
     """
     获取当前连接wifi名称
@@ -336,17 +324,6 @@ def get_wifi_name() -> str:
 
 
 pass
-
-
-def get_current_ssid():
-    try:
-        # 执行iwgetid命令，获取Wi-Fi的SSID
-        result = subprocess.check_output(["iwgetid", "-r"]).decode().strip()
-        return result
-    except subprocess.CalledProcessError:
-        # 处理命令执行出错的情况
-        return "获取Wi-Fi名称失败"
-    pass
 
 
 class ManualProxy(ProxyMode):
@@ -494,15 +471,6 @@ def close_proxy():
 
 
 if __name__ == '__main__':
-    # 调用函数获取当前Wi-Fi的SSID
-    # current_ssid = get_current_ssid()
-    # print("当前Wi-Fi的SSID是：", current_ssid)
-    # 运行CMD脚本
-    # result = subprocess.run('wifi_name.bat', capture_output=True, text=True)
-    # name = result.stdout
-    # # 打印输出结果
-    # print(result.stdout)
-
     # 读取获取配置文件
     proxy_dict = ProxyMode.read_json()
     if proxy_dict != False:
