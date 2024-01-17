@@ -58,20 +58,22 @@ class ProxyMode(metaclass=abc.ABCMeta):
         读取配置文件，正常时返回字典对象，发生异常时返回FALSE
         :return:
         """
+        file_path = os.path.abspath(".") + r'\proxy.json'
         try:
             # 采用with-open 去关闭资源，而不是try-finally,保持代码整洁
             # 配置mode为读取，write时文件指针放在文件末尾，文本编码为UTF-8
-            with open('proxy.json', 'r', encoding="UTF-8") as fh:
+
+            with open(file_path, 'r', encoding="UTF-8") as fh:
                 data = json.load(fh)
                 # print(data.keys())
                 return data
         except IOError:
             # 如果捕获异常，记录失败日志
             # traceback.print_exc()
-            print("\033[0;33;40m未找到配置文件 proxy.json！\033[0m")
+            print("\033[0;33;40m未找到配置文件 %s！\033[0m" % file_path)
             ProxyMode.if_write_json()
         except json.decoder.JSONDecodeError:
-            print("\033[0;33;40m配置文件 proxy.json 损坏！\033[0m")
+            print("\033[0;33;40m配置文件 %s 损坏！\033[0m" % file_path)
             ProxyMode.if_write_json()
         pass
 
